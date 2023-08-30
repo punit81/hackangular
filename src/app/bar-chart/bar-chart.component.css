@@ -1,0 +1,33 @@
+.chart-container {
+    width: 40vw;  /* 40% of viewport width */
+    height: 60vh;  /* 40% of viewport height */
+    margin: 20px auto;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+  
+   
+  
+  .chart {
+    width: 100%;  /* Full width of the container */
+    height: 100%;  /* Full height of the container */
+  }
+  
+   
+  
+  /* If you have labels or titles within the chart container */
+  .chart-label {
+    color: #f0f0f0;
+  }
+  
+   
+  
+  .chart-title {
+    color: #f0f0f0;
+    text-align: center;
+    margin-bottom: 10px;
+  }

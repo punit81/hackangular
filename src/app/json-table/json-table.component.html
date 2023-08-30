@@ -1,0 +1,14 @@
+<table>
+    <tbody>
+    <tr *ngFor="let responseItem of jsonData">
+    <ng-container *ngFor="let r of responseItem.row">
+   <tr >
+     <td>{{ r.name }}</td>
+     <td>:</td>
+    <td>{{ r.value }}</td>
+    </tr>
+
+    </ng-container>
+    </tr>
+    </tbody>
+    </table>
