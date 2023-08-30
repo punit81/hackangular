@@ -16,7 +16,7 @@ export class BarChartComponent implements OnInit {
   }
 
   fetchChartData() {
-    this.http.get<any>('http://localhost:5000/get_chart_json_data').subscribe(response => {
+    this.http.get<any>('http://localhost:5000/hack').subscribe(response => {
       this.chartData = {
         labels: response.labels,
         datasets: [

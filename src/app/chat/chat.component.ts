@@ -25,7 +25,7 @@ export class ChatComponent {
     this.messages.push({ content: this.newMessage, sender: 'user' });
 
     // Simulate a bot response (replace with actual bot logic)
-    this.http.post<any>('http://localhost:5000/send_message', { message: this.newMessage }).subscribe(response => {
+    this.http.post<any>('http://127.0.0.1:5000/send_message', { message: this.newMessage }).subscribe(response => {
       this.messages.push({ content: response.message, sender: 'bot' });
     });
 
