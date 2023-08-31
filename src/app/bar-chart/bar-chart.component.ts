@@ -1,34 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ChatComponent } from '../chat/chat.component';
+import { SharedDataService } from '../shared-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit {
+export class BarChartComponent {
   chartData: any;
+  newMessage: string = '';
+  private chartDataSubscription: Subscription | undefined;
+  constructor(private http: HttpClient,private sharedDataService:SharedDataService) {}
 
-  constructor(private http: HttpClient) {}
-
+ 
   ngOnInit() {
-    this.fetchChartData();
-  }
-
-  fetchChartData() {
-    this.http.get<any>('http://localhost:5000/hack').subscribe(response => {
-      this.chartData = {
-        labels: response.labels,
-        datasets: [
-          {
-            label: 'Chart Data',
-            data: response.data,
-            backgroundColor: 'rgba(75,192,192,0.2)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1
-          }
-        ]
-      };
+    this.chartDataSubscription = this.sharedDataService.getChartDataObservable().subscribe(data => {
+      this.chartData = data;
     });
   }
+   
+  ngOnDestroy() {     if (this.chartDataSubscription) {       this.chartDataSubscription.unsubscribe();     }   }
+
+  
 }

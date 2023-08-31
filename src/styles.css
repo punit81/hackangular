@@ -10,3 +10,44 @@
   app-chat, app-bar-chart {
     height: 40vh;
   }
+
+  /* Reset some default margin and padding */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+header img {
+  max-width: 70%; /* Adjust the width as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px; /* Add margin for spacing */
+}
+
+/* Set up a flex container to position items vertically */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content wrapper to push footer to the bottom */
+.content-wrapper {
+  flex: 1; /* Take up remaining space */
+}
+
+/* Styling for the footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Push the footer to the bottom */
+}

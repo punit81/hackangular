@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse } from '../interfaces/api-response.interface'; 
 import { ResponseItem } from '../interfaces/api-response.interface';// Adjust the path
-
- 
+import { SharedDataService } from '../shared-data.service';
+import { Subscription } from 'rxjs'; 
 
 @Component({
   selector: 'app-json-table',
@@ -12,25 +12,19 @@ import { ResponseItem } from '../interfaces/api-response.interface';// Adjust th
 })
 export class JsonTableComponent implements OnInit {
   jsonData: ResponseItem[] = [];
+  private tableDataSubscription: Subscription | undefined;
+  tableData: any;
 
- 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,public sharedDataService:SharedDataService) {}
 
  
 
   ngOnInit() {
-    this.loadData();
-  }
-
- 
-
-  loadData() {
-    const apiUrl = 'http://localhost:5000/get_json_data';
-    this.http.get<ApiResponse>(apiUrl).subscribe(data => {
-      this.jsonData = data.response;
-      let arr:any = this.jsonData[0].row;
-      console.log(arr);
+    this.tableDataSubscription = this.sharedDataService.getChartDataObservable().subscribe(data => {
+      this.tableData = data;
+      this.jsonData = this.tableData;
     });
   }
+   
+  ngOnDestroy() {     if (this.tableDataSubscription) {       this.tableDataSubscription.unsubscribe();     }   }
 }

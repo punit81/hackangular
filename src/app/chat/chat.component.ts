@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
+import { SharedDataService } from '../shared-data.service';
+import { BarChartComponent } from '../bar-chart/bar-chart.component';
+
 
 interface Message {
   content: string;
@@ -15,7 +18,7 @@ export class ChatComponent {
   messages: Message[] = [];
   newMessage: string = '';
 
-  constructor(private http: HttpClient) {} // Inject the HttpClient
+  constructor(private http: HttpClient,private sharedDataService:SharedDataService) {} // Inject the HttpClient
 
   sendMessage() {
     if (this.newMessage.trim() === '') {
@@ -29,7 +32,9 @@ export class ChatComponent {
       this.messages.push({ content: response.message, sender: 'bot' });
     });
 
-
-    this.newMessage = '';
+    this.sharedDataService.setNewMessage(this.newMessage);
+    this.sharedDataService.fetchChartData();
+    this.sharedDataService.loadData();
+    
   }
 }

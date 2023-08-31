@@ -1,14 +1,7 @@
-<table>
-    <tbody>
-    <tr *ngFor="let responseItem of jsonData">
-    <ng-container *ngFor="let r of responseItem.row">
-   <tr >
-     <td>{{ r.name }}</td>
-     <td>:</td>
-    <td>{{ r.value }}</td>
-    </tr>
-
-    </ng-container>
-    </tr>
-    </tbody>
-    </table>
+<!-- Angular HTML Template -->
+<div class="key-value-wrapper">
+  <div *ngFor="let rowItems of sharedDataService.listOfObjects" class="key-value-pair">
+  <div class="key">{{ rowItems.name }}</div>
+  <div class="value">{{ rowItems.value }}</div>
+  </div>
+  </div>

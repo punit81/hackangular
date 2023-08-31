@@ -1,25 +1,26 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.key-value-wrapper {
+  width: 270px;         /* Occupies 30% of the screen width */
+  margin-top: 200px;    /* Moves the wrapper down */
+  margin-right: 0;
+  margin-left: 30px;
   
-   
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-   
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-   
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  /* Add these lines to make the wrapper scrollable */
+  height: 300px;        /* Set the desired height for scrolling */
+  overflow: auto;       /* Enable scrolling when content exceeds the height */
+}
+
+.key-value-pair {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.key {
+  font-weight: bold;
+  margin-left: 0px;
+  margin-right: 50px;
+}
+
+.value {
+  /* Add any specific styles for the value here */
+}

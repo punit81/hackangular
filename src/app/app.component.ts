@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; 
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,15 @@ export class AppComponent {
   title = 'Angular-Project-Demo';
   showPrompt: boolean = false;
   userInput: string = '';
-  
+  constructor(private http: HttpClient) {}
+
   togglePrompt() {
     this.showPrompt = !this.showPrompt;
   }
 
   submit() {
     // Your logic for handling the submitted value
-    console.log('Submitted:', this.userInput);
+    
 
     // Hide the prompt
     this.togglePrompt();
